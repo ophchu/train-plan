@@ -1,0 +1,23 @@
+
+### Scala template
+*.class
+
+# sbt specific
+.cache
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+
+
+
+
+
+.idea
+logs
+project/target
+project/project/target
