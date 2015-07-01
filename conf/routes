@@ -9,4 +9,7 @@ GET     /                           controllers.Application.index
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 
-GET     /test                           controllers.Application.test
+GET     /test/                           controllers.Application.test
+GET     /ids/:id                         controllers.Application.ids(id: Long, sd: String ?= "tmp")
+
+GET     /hello/:name                       controllers.com.ophchu.ActorMain.sayHello(name: String)
