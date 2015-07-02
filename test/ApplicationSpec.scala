@@ -26,5 +26,24 @@ class ApplicationSpec extends Specification {
       contentType(home) must beSome.which(_ == "text/html")
       contentAsString(home) must contain ("Your new application is ready.")
     }
+
+    "render test page with string should return BAD_REQUEST" in new WithApplication {
+      val test = route(FakeRequest(GET, "/ids/ophir")).get
+      status(test) must equalTo(OK)
+    }
+
+    "render test page with long id should return html page" in new WithApplication {
+      val test = route(FakeRequest(GET, "/ids/100")).get
+      status(test) must equalTo(OK)
+      contentType(test) must beSome.which(_ == "text/html")
+      contentAsString(test) must contain ("The id is: 100 --> tmp")
+    }
+
+    "render test page with long id and string should return html page" in new WithApplication {
+      val test = route(FakeRequest(GET, "/ids/100?sd=aab")).get
+      status(test) must equalTo(OK)
+      contentType(test) must beSome.which(_ == "text/html")
+      contentAsString(test) must contain ("The id is: 100 --> aab")
+    }
   }
 }
