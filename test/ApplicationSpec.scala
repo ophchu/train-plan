@@ -29,7 +29,7 @@ class ApplicationSpec extends Specification {
 
     "render test page with string should return BAD_REQUEST" in new WithApplication {
       val test = route(FakeRequest(GET, "/ids/ophir")).get
-      status(test) must equalTo(OK)
+      status(test) must equalTo(BAD_REQUEST)
     }
 
     "render test page with long id should return html page" in new WithApplication {
